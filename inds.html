@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preethi A</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1117;
+  color: white;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: #161b22;
+  padding: 10px;
+  text-align: center;
+  color: #00b4d8;
+  font-size: 20px;
+}
+
+.hero {
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+section {
+  padding: 20px;
+}
+
+.card {
+  background: rgba(22,27,34,0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  margin: 8px 0;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px #00b4d8;
+}
+
+h2 {
+  color: #00b4d8;
+  border-bottom: 2px solid #00b4d8;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.contact-btn {
+  display: inline-block;
+  background: #00b4d8;
+  color: black;
+  padding: 6px 10px;
+  margin: 5px 3px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media(max-width: 768px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>Preethi A</nav>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Preethi A</h1>
+<p>Artificial Intelligence & Data Science Student</p>
+<p>Coimbatore | preethiannamalai59@gmail.com</p>
+</section>
+
+<!-- SUMMARY -->
+<section>
+<h2>Professional Summary</h2>
+<div class="card">
+Fresher in Artificial Intelligence and Data Science (AIDS) with strong interest in software development and AI-driven solutions. Skilled in Python programming and currently learning Java. Experienced in problem-solving through platforms like LeetCode and Exercism. Completed an AI-based supply chain project and earned multiple certifications in data analytics and cloud technologies. Selected for the CodSoft Internship Program and actively participating in hackathons to enhance technical and practical skills.
+</div>
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2>Technical Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+<b>Programming</b>
+<p>Python, Java (Basic)</p>
+</div>
+
+<div class="card">
+<b>Technical Skills</b>
+<p>Problem Solving, Data Analytics Basics, Supply Chain Concepts</p>
+</div>
+
+<div class="card">
+<b>Platforms</b>
+<p>LeetCode, Exercism, Databricks (Basics)</p>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECT -->
+<section>
+<h2>Project</h2>
+
+<div class="card">
+<b>AI Supply Chain Intelligence Platform</b>
+<p>Developed a system to monitor inventory, sales trends, and supply-demand patterns. Helps reduce stock shortages and improve efficiency using data-driven insights.</p>
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+<h2>Experience</h2>
+
+<div class="card">
+<b>Python Programming Intern – CodSoft</b>
+<p>Working on Python-based tasks, improving problem-solving skills and building real-world projects.</p>
+</div>
+
+</section>
+
+<!-- EDUCATION -->
+<section>
+<h2>Education</h2>
+
+<div class="card">
+UG – Artificial Intelligence and Data Science<br>
+SNS College of Technology, Coimbatore
+</div>
+
+<div class="card">
+12th Grade – 81.5%<br>
+Skills: Teamwork, Time Management
+</div>
+
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+<h2>Certifications</h2>
+
+<div class="card">Analytics Vidhya Certification</div>
+<div class="card">Databricks Certification</div>
+<div class="card">IBM SkillsBuild Certification</div>
+<div class="card">Scaler Skill Certification</div>
+
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+
+<a class="contact-btn" href="mailto:preethiannamalai59@gmail.com">Email</a>
+<a class="contact-btn" href="https://www.linkedin.com/in/preethiannamalai" target="_blank">LinkedIn</a>
+
+</section>
+
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let dots = [];
+for(let i=0;i<70;i++){
+  dots.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2,
+    dx: Math.random()-0.5,
+    dy: Math.random()-0.5
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#00b4d8";
+
+  dots.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fill();
+
+    d.x+=d.dx;
+    d.y+=d.dy;
+
+    if(d.x<0||d.x>canvas.width) d.dx*=-1;
+    if(d.y<0||d.y>canvas.height) d.dy*=-1;
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
